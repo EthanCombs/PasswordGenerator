@@ -4,13 +4,14 @@ function makePassword(upper, lower, num, sym, length) {
     const upperCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const lowerCharacters = `abcdefghijklmnopqrstuvwxyz`;
     const numbers = `0123456789`;
-    const symbols = `!@#$%^&*(){}[]`
+    const symbols = `!@#$%^&*(){}[]=<>/,.`
     let randomChars = ``;
     if (upper) randomChars += upperCharacters;
     if (lower) randomChars += lowerCharacters;
     if (num) randomChars += numbers;
     if (sym) randomChars += symbols;
     const charactersLength = randomChars.length;
+    if (charactersLength == 0) alert(`Please enter an option`);
     for (i = 0; i < length; i++) {
         result += randomChars.charAt(Math.floor(Math.random() * charactersLength));
     }
@@ -30,4 +31,4 @@ generate.addEventListener(`click`, () => {
 const clipboard = document.getElementById(`clipboard`);
 clipboard.addEventListener(`click`,  () => {
     navigator.clipboard.writeText(result.innerText);
-  });
+});
